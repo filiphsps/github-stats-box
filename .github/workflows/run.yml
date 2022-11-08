@@ -13,7 +13,7 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: 16
-            - run: npm imstall
+            - run: npm install
             - run: node index.js
               env:
                   GH_TOKEN: ${{ secrets.GH_TOKEN }} # Do not edit, defined in secrets
