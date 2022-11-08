@@ -69,8 +69,8 @@ async function updateGist(stats) {
         ]
             .map((content) => {
                 let line = `${content[1]}:${content[2]}`;
-                line = line.replace(':', ':' + ' '.repeat(45 - line.length));
-                line = `${content[0]}    ${line}`;
+                line = line.replace(':', ':' + ' '.repeat(50 - line.length));
+                line = `${line}`;
                 return line;
             })
             .join('\n') + '\n';
