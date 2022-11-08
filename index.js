@@ -61,17 +61,16 @@ async function updateGist(stats) {
 
     const gistContent =
         [
-            ['', `Total Stars`, humanize(stats.totalStars)],
-            ['', countAllCommits ? 'Total Commits' : 'Past Year Commits', humanize(stats.totalCommits)],
-            ['', `Total PRs`, humanize(stats.totalPRs)],
-            ['', `Total Issues`, humanize(stats.totalIssues)],
-            ['', `Contributed to`, humanize(stats.contributedTo)],
+            [`Stars`, stats.totalStars],
+            ['Total Commits' , stats.totalCommits],
+            [`Pull Requests`, stats.totalPRs],
+            [`Issues`, stats.totalIssues],
+            [`Contributions`, stats.contributedTo],
         ]
+            .sort((a, b) => (b[1] ?? 0) - (a[1] ?? 0))
             .map((content) => {
-                let line = `${content[1]}:${content[2]}`;
-                line = line.replace(':', ':' + ' '.repeat(50 - line.length));
-                line = `${line}`;
-                return line;
+                const line = `${content[0]}:${humanize(content[1])}`;
+                return line.replace(':', ':' + ' '.repeat(50 - line.length));
             })
             .join('\n') + '\n';
 
